@@ -1,0 +1,11 @@
+/node_modules
+package-lock.json
+/assets/css
+/assets/
+mix-manifest.json
+.DS_Store
+/images
+
+/.idea
+/.vscode
+/vendor/

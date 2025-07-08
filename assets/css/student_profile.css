@@ -1,0 +1,393 @@
+.mt {
+  margin-top: 20px;
+}
+
+.primary-button {
+  color: #fff;
+  background: #60BBAC;
+  border: none;
+  padding: 20px 20px;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+.primary-button:hover {
+  background: #2E6668;
+  color: #fff;
+}
+
+.el-menu--horizontal .is-active {
+  color: #60BBAC !important;
+  border-bottom-color: #60BBAC !important;
+}
+
+.el-menu--horizontal > .el-menu-item.is-active {
+  color: #60BBAC !important;
+  border-bottom-color: #60BBAC !important;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.student-profile {
+  margin-top: 20px;
+}
+.student-profile .el-form-item__content .el-input {
+  border: none;
+  margin-bottom: 16px;
+}
+.student-profile .el-form-item__content .el-input .el-input__wrapper {
+  padding: 0;
+}
+.student-profile .el-form-item__content .el-input .el-input__wrapper .el-input__inner {
+  height: 50px;
+  border: 1px solid #BFC4C8;
+  border-radius: 4px;
+}
+.student-profile .el-form-item__content .el-input .el-input__wrapper .el-input__inner:focus {
+  border-color: #60BBAC;
+}
+.student-profile .el-form-item__content .el-select {
+  border: none;
+}
+.student-profile .el-form-item__content .el-select .el-select__wrapper {
+  height: 50px;
+}
+.student-profile .el-form-item__content .el-select .el-select__wrapper:focus {
+  border-color: #60BBAC;
+}
+
+.membership-container .membership-plans {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.membership-container .membership-plans .selected-plan {
+  border-color: #66D586 !important;
+  cursor: pointer;
+}
+.membership-container .membership-plans .box-card {
+  max-width: 520px;
+  width: 100%;
+  border: 2px solid #E7E7E7;
+  border-radius: 20px;
+  cursor: pointer;
+}
+@media (max-width: 1024px) {
+  .membership-container .membership-plans .box-card {
+    width: 400px;
+  }
+}
+@media (max-width: 912px) {
+  .membership-container .membership-plans .box-card {
+    max-width: 544px;
+    width: 100%;
+    justify-content: center;
+  }
+}
+.membership-container .membership-plans .box-card .plan-header-section {
+  padding: 31px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: center;
+  gap: 20px;
+}
+.membership-container .membership-plans .box-card .plan-header-section .plan-type h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #040707;
+  margin-bottom: 0;
+}
+.membership-container .membership-plans .box-card .plan-header-section .plan-type span {
+  font-size: 24px;
+  font-weight: 400;
+  color: #60BBAC;
+}
+@media (max-width: 1024px) {
+  .membership-container .membership-plans .box-card .plan-header-section .plan-type h2 {
+    font-size: 20px;
+  }
+  .membership-container .membership-plans .box-card .plan-header-section .plan-type span {
+    font-size: 18px;
+  }
+}
+.membership-container .membership-plans .box-card .plan-details {
+  padding: 0 31px;
+}
+.membership-container .membership-plans .box-card .plan-details .plan-features {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.membership-container .membership-plans .box-card .plan-details .plan-features span {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(117, 128, 137, 0.6);
+}
+@media (max-width: 1024px) {
+  .membership-container .membership-plans .box-card .plan-details .plan-features span {
+    font-size: 14px;
+  }
+}
+.membership-container .membership-plans .box-card .plan-footer {
+  background: rgba(96, 187, 172, 0.0509803922);
+  padding: 10px 31px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.membership-container .membership-plans .box-card .plan-footer h2 {
+  font-size: 50px;
+  font-weight: 700;
+  color: #040707;
+  margin-bottom: 0;
+}
+.membership-container .membership-plans .box-card .plan-footer h2 strong {
+  font-size: 20px;
+  font-weight: 400;
+  color: #758089;
+}
+@media (max-width: 1024px) {
+  .membership-container .membership-plans .box-card .plan-footer h2 {
+    font-size: 30px;
+  }
+  .membership-container .membership-plans .box-card .plan-footer h2 strong {
+    font-size: 16px;
+  }
+}
+.membership-container .membership-plans .box-card .best-value {
+  font-size: 14px;
+  font-weight: 400;
+  padding: 0 8px;
+  color: #758089;
+}
+.membership-container .membership-plans .box-card .plan-footer-month-section {
+  text-align: center;
+}
+.membership-container .membership-plans .box-card .plan-footer-month-section .plan-footer-month span {
+  font-size: 16px;
+  font-weight: 400;
+  color: #FFFFFF;
+  background-color: #60BBAC;
+  padding: 5px 20px;
+  border-radius: 20px;
+}
+@media (max-width: 768px) {
+  .membership-container .membership-plans .box-card .plan-footer-month-section .plan-footer-month span {
+    font-size: 9px;
+    padding: 5px 7px;
+  }
+}
+.membership-container .membership-plans .box-card .plan-selected {
+  border: 2px solid #66D586;
+}
+.membership-container .payment-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #040707;
+  margin-top: 20px;
+}
+.membership-container .stripe-form {
+  margin-top: 20px;
+}
+.membership-container .stripe-form .stripe-form-row-group {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 20px;
+}
+.membership-container .stripe-form .stripe-form-row-group .stripe-form-row label {
+  font-size: 16px;
+  font-weight: 400;
+  color: #001324;
+}
+.membership-container .stripe-form .stripe-form-row-group .stripe-form-row .stripe-element {
+  padding: 16px 12px;
+  border: 1px solid #BFC4C8;
+  border-radius: 4px;
+  background: white;
+}
+.membership-container .stripe-form .error {
+  color: #dc3545;
+  margin-top: 8px;
+  font-size: 14px;
+}
+.membership-container .el-radio__input.is-checked .el-radio__inner {
+  background-color: #60BBAC;
+  border-color: #60BBAC;
+}
+.membership-container .el-radio__input.is-checked + .el-radio__label {
+  color: #001324;
+}
+
+.membership-duration {
+  margin: 10px 0;
+}
+.membership-duration .el-radio__label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #758089;
+}
+@media (max-width: 768px) {
+  .membership-duration .el-radio__label {
+    font-size: 12px;
+    white-space: break-spaces;
+  }
+}
+.membership-duration .checkout-button {
+  color: #fff;
+  background: #2E6668;
+  border: none;
+  padding: 20px 20px;
+  font-size: 16px;
+  transition: all 0.3s;
+  margin-top: 20px;
+  width: 100%;
+}
+.membership-duration .checkout-button:hover {
+  background: #60BBAC;
+}
+
+.my-card {
+  /* mobile responsive */
+}
+.my-card .card-container {
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.my-card .offer-card-image {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+}
+.my-card .image-container {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  position: absolute;
+  top: 28%;
+  left: 20px;
+  background: transparent;
+}
+.my-card .profile-image {
+  width: 97px;
+  height: 108px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 8px;
+}
+.my-card .card-user-dob {
+  font-size: 10px;
+  font-weight: bold;
+  position: absolute;
+  top: 33%;
+  right: 33px;
+}
+.my-card .card-user-name {
+  font-size: 15px;
+  font-weight: bold;
+  position: absolute;
+  top: 31%;
+  right: 42%;
+}
+.my-card .card-user-expiry {
+  font-size: 10px;
+  font-weight: bold;
+  position: absolute;
+  top: 48%;
+  right: 46%;
+}
+.my-card .card-user-card-no {
+  font-size: 18px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  display: inline-block;
+  position: absolute;
+  top: 68%;
+  right: 58%;
+}
+.my-card .renew-now-button {
+  width: 80%;
+  font-size: 28px;
+  color: #fff;
+  padding: 28px 0;
+}
+.my-card .invalid-text {
+  color: red;
+  font-size: 18px;
+}
+@media (max-width: 768px) {
+  .my-card .image-container {
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    position: absolute;
+    top: 25%;
+    left: 20px;
+    background: #fff;
+  }
+  .my-card .profile-image {
+    width: 60px;
+    height: 60px;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+  .my-card .card-user-dob {
+    font-size: 8px;
+    top: 33%;
+    right: 15px;
+  }
+  .my-card .card-user-name {
+    font-size: 12px;
+    top: 32%;
+    right: 40%;
+  }
+  .my-card .card-user-expiry {
+    font-size: 8px;
+    top: 48%;
+    right: 40%;
+  }
+  .my-card .renew-now-button {
+    font-size: 16px;
+    padding: 20px 0;
+  }
+  .my-card .invalid-text {
+    font-size: 14px;
+  }
+}
+
+.change-password .el-form-item__error {
+  color: #dc3545;
+  font-size: 12px;
+  top: 85%;
+}
+.change-password .el-form-item__content .el-input {
+  border: none;
+  margin-bottom: 14px;
+}
+.change-password .el-form-item__content .el-input .el-input__wrapper {
+  padding: 0;
+}
+.change-password .el-form-item__content .el-input .el-input__wrapper .el-input__inner {
+  height: 50px;
+  border: 1px solid #BFC4C8;
+  border-right-width: 0px;
+  border-radius: 4px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.change-password .el-form-item__content .el-input .el-input__wrapper .el-input__inner:focus {
+  border-color: #60BBAC;
+}
+.change-password .el-form-item__content .el-input .el-input__wrapper .el-input__suffix {
+  background: transparent;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  padding-right: 10px;
+}
+.change-password .el-form-item__content .el-input .el-input__wrapper .el-input__suffix .el-button--text {
+  color: #60BBAC;
+}

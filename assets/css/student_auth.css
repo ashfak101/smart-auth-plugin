@@ -1,0 +1,134 @@
+.sa-student-profile-login .title {
+  font-size: 32px;
+  color: #001324;
+  text-align: center;
+  margin-bottom: 0px;
+}
+.sa-student-profile-login .subTitle {
+  font-size: 16px;
+  color: #001324;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.sa-student-profile-login .login-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  background-color: #fff;
+}
+.sa-student-profile-login .login-form .form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 100px;
+}
+.sa-student-profile-login .login-form .register-link {
+  margin-top: 10px;
+  color: #60BBAC;
+  text-decoration: none;
+  cursor: pointer;
+}
+.sa-student-profile-login .login-form .register-link:hover {
+  text-decoration: underline;
+}
+.sa-student-profile-login .login-form .forgot-password {
+  color: #60BBAC;
+  cursor: pointer;
+}
+.sa-student-profile-login .login-form .forgot-password:hover {
+  text-decoration: underline;
+}
+.sa-student-profile-login .login-form .el-form-item--label-top .el-form-item__label {
+  font-size: 16px;
+  color: #4a4a4a;
+}
+.sa-student-profile-login .login-form .el-form-item__content .el-input {
+  border: none;
+}
+.sa-student-profile-login .login-form .el-form-item__content .el-input .el-input__wrapper {
+  padding: 0;
+}
+.sa-student-profile-login .login-form .el-form-item__content .el-input .el-input__wrapper .el-input__inner {
+  height: 50px;
+  border: 1px solid #BFC4C8;
+  border-radius: 4px;
+}
+.sa-student-profile-login .login-form .el-form-item__content .el-input .el-input__wrapper .el-input__inner:focus {
+  border-color: #60BBAC;
+}
+.sa-student-profile-login .login-form .login-button {
+  color: #fff;
+  background: #001324;
+  width: 100%;
+  border: none;
+  padding: 20px 20px;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+.sa-student-profile-login .login-form .login-button:hover {
+  background: #000000;
+}
+
+.sa-student-profile-register .register-form .form-section-header h1 {
+  font-size: 32px;
+}
+.sa-student-profile-register .register-form .form-section-header p {
+  font-size: 16px;
+  color: #001324;
+}
+.sa-student-profile-register .register-form .login-link {
+  color: #60BBAC;
+  text-decoration: none;
+  cursor: pointer;
+}
+.sa-student-profile-register .register-form .login-link:hover {
+  text-decoration: underline;
+}
+.sa-student-profile-register .register-form .terms-conditions {
+  color: #60BBAC;
+  text-decoration: none;
+  cursor: pointer;
+}
+.sa-student-profile-register .register-form .terms-conditions:hover {
+  text-decoration: underline;
+}
+.sa-student-profile-register .register-form .el-form-item--label-top .el-form-item__label {
+  font-size: 16px;
+  color: #001324;
+}
+.sa-student-profile-register .register-form .el-form-item__content .el-input {
+  border: none;
+}
+.sa-student-profile-register .register-form .el-form-item__content .el-input .el-input__wrapper {
+  padding: 0;
+}
+.sa-student-profile-register .register-form .el-form-item__content .el-input .el-input__wrapper .el-input__inner {
+  height: 50px;
+  border: 1px solid #BFC4C8;
+  border-radius: 4px;
+}
+.sa-student-profile-register .register-form .el-form-item__content .el-input .el-input__wrapper .el-input__inner:focus {
+  border-color: #60BBAC;
+}
+.sa-student-profile-register .register-form .el-form-item__content .el-select {
+  border: none;
+}
+.sa-student-profile-register .register-form .el-form-item__content .el-select .el-select__wrapper {
+  height: 50px;
+}
+.sa-student-profile-register .register-form .el-form-item__content .el-select .el-select__wrapper:focus {
+  border-color: #60BBAC;
+}
+.sa-student-profile-register .register-form .register-button {
+  color: #fff;
+  background: #60BBAC;
+  border: none;
+  padding: 20px 20px;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+.sa-student-profile-register .register-form .register-button:hover {
+  background: #2E6668;
+}

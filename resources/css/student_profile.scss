@@ -1,0 +1,490 @@
+.mt {
+    margin-top: 20px;
+}
+
+.primary-button {
+    color: #fff;
+    background: #60BBAC;
+
+    border: none;
+    padding: 20px 20px;
+    font-size: 16px;
+    transition: all 0.3s;
+
+    &:hover {
+        background: #2E6668;
+        color: #fff;
+    }
+
+}
+
+
+
+.el-menu--horizontal {
+    .is-active {
+        color: #60BBAC !important;
+        border-bottom-color: #60BBAC !important;
+    }
+}
+
+.el-menu--horizontal>.el-menu-item.is-active {
+    color: #60BBAC !important;
+    border-bottom-color: #60BBAC !important;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.student-profile {
+    margin-top: 20px;
+
+    .el-form-item__content {
+        .el-input {
+            border: none;
+            margin-bottom: 16px;
+
+            .el-input__wrapper {
+                padding: 0;
+
+                .el-input__inner {
+                    height: 50px;
+                    border: 1px solid #BFC4C8;
+                    border-radius: 4px;
+
+                    &:focus {
+                        border-color: #60BBAC;
+                    }
+                }
+
+            }
+        }
+
+        .el-select {
+            border: none;
+
+            .el-select__wrapper {
+                height: 50px;
+
+                &:focus {
+                    border-color: #60BBAC;
+                }
+            }
+        }
+    }
+}
+
+.membership-container {
+    .membership-plans {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+
+        .selected-plan {
+            border-color: #66D586 !important;
+            cursor: pointer;
+        }
+
+        .box-card {
+            max-width: 520px;
+            width: 100%;
+            border: 2px solid #E7E7E7;
+            border-radius: 20px;
+            cursor: pointer;
+
+            @media (max-width: 1024px) {
+                width: 400px;
+            }
+
+            @media (max-width: 912px) {
+                max-width: 544px;
+                width: 100%;
+                justify-content: center;
+            }
+
+
+
+
+            .plan-header-section {
+                padding: 31px;
+                display: grid;
+                grid-template-columns: 1fr 3fr;
+                align-items: center;
+                gap: 20px;
+
+                .plan-type {
+                    h2 {
+                        font-size: 24px;
+                        font-weight: 600;
+                        color: #040707;
+                        margin-bottom: 0;
+
+
+                    }
+
+                    span {
+                        font-size: 24px;
+                        font-weight: 400;
+                        color: #60BBAC;
+                    }
+
+                    @media (max-width: 1024px) {
+                        h2 {
+                            font-size: 20px;
+
+                        }
+
+                        span {
+                            font-size: 18px;
+
+                        }
+                    }
+                }
+            }
+
+            .plan-details {
+                padding: 0 31px;
+
+                .plan-features {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    span {
+                        font-size: 16px;
+                        font-weight: 400;
+                        color: #75808999;
+
+                    }
+                }
+
+                @media (max-width: 1024px) {
+                    .plan-features {
+                        span {
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+
+            .plan-footer {
+                background: #60BBAC0D;
+                padding: 10px 31px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                h2 {
+                    font-size: 50px;
+                    font-weight: 700;
+                    color: #040707;
+                    margin-bottom: 0;
+
+                    strong {
+                        font-size: 20px;
+                        font-weight: 400;
+                        color: #758089;
+                    }
+                }
+
+                @media (max-width: 1024px) {
+                    h2 {
+                        font-size: 30px;
+
+                        strong {
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+
+
+            .best-value {
+                font-size: 14px;
+                font-weight: 400;
+                padding: 0 8px;
+                color: #758089;
+
+            }
+
+            .plan-footer-month-section {
+                text-align: center;
+
+                .plan-footer-month {
+                    span {
+                        font-size: 16px;
+                        font-weight: 400;
+                        color: #FFFFFF;
+                        background-color: #60BBAC;
+                        padding: 5px 20px;
+                        border-radius: 20px;
+
+                        @media (max-width:768px) {
+                            font-size: 9px;
+                            padding: 5px 7px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .box-card .plan-selected {
+            border: 2px solid #66D586;
+        }
+    }
+
+    .payment-title {
+        font-size: 24px;
+        font-weight: 600;
+        color: #040707;
+        margin-top: 20px;
+    }
+
+    .stripe-form {
+        margin-top: 20px;
+
+        .stripe-form-row-group {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 20px;
+
+            .stripe-form-row {
+                label {
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: #001324;
+                }
+
+                .stripe-element {
+                    padding: 16px 12px;
+                    border: 1px solid #BFC4C8;
+                    border-radius: 4px;
+                    background: white;
+                }
+            }
+        }
+
+
+        .error {
+            color: #dc3545;
+            margin-top: 8px;
+            font-size: 14px;
+        }
+
+    }
+    .el-radio__input.is-checked .el-radio__inner{
+        background-color: #60BBAC;
+        border-color: #60BBAC;
+    }
+    .el-radio__input.is-checked+.el-radio__label{
+        color: #001324;
+    }
+}
+
+
+.membership-duration {
+    margin: 10px 0;
+
+    .el-radio__label {
+        font-size: 14px;
+        font-weight: 400;
+        color: #758089;
+
+        @media (max-width: 768px) {
+            font-size: 12px;
+            white-space: break-spaces;
+        }
+    }
+
+
+    .checkout-button {
+        color: #fff;
+        background: #2E6668;
+        border: none;
+        padding: 20px 20px;
+        font-size: 16px;
+        transition: all 0.3s;
+        margin-top: 20px;
+        width: 100%;
+
+        &:hover {
+            background: #60BBAC;
+        }
+    }
+}
+
+// my card section
+
+.my-card {
+    .card-container {
+        position: relative;
+        width: fit-content;
+    }
+
+    .offer-card-image {
+        max-width: 500px;
+        width: 100%;
+        height: auto;
+    }
+
+    .image-container {
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+        position: absolute;
+        top: 28%;
+        left: 20px;
+        background: transparent;
+    }
+
+    .profile-image {
+        width: 97px;
+        height: 108px;
+        object-fit: contain;
+        border-radius: 8px;
+    }
+
+    .card-user-dob {
+        font-size: 10px;
+        font-weight: bold;
+        position: absolute;
+        top: 33%;
+        right: 33px;
+    }
+
+    .card-user-name {
+        font-size: 15px;
+        font-weight: bold;
+        position: absolute;
+        top: 31%;
+        right: 42%;
+    }
+
+    .card-user-expiry {
+        font-size: 10px;
+        font-weight: bold;
+        position: absolute;
+        top: 48%;
+        right: 46%;
+    }
+
+    .card-user-card-no {
+        font-size: 18px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        display: inline-block;
+        position: absolute;
+        top: 68%;
+        right:  58%;
+    }
+
+    .renew-now-button {
+        width: 80%;
+        font-size: 28px;
+        color: #fff;
+        padding: 28px 0;
+    }
+
+    .invalid-text {
+        color: red;
+        font-size: 18px;
+    }
+
+    /* mobile responsive */
+    @media (max-width: 768px) {
+        .image-container {
+            width: 60px;
+            height: 60px;
+            overflow: hidden;
+            position: absolute;
+            top: 25%;
+            left: 20px;
+            background: #fff;
+        }
+
+        .profile-image {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .card-user-dob {
+            font-size: 8px;
+            top: 33%;
+            right: 15px;
+        }
+
+        .card-user-name {
+            font-size: 12px;
+            top: 32%;
+            right: 40%;
+        }
+
+        .card-user-expiry {
+            font-size: 8px;
+            top: 48%;
+            right: 40%;
+        }
+
+        .renew-now-button {
+            font-size: 16px;
+            padding: 20px 0;
+        }
+
+        .invalid-text {
+            font-size: 14px;
+        }
+    }
+}
+
+
+// Change Password
+
+.change-password {
+    .el-form-item__error {
+        color: #dc3545;
+        font-size: 12px;
+        top: 85%;
+    }
+
+    .el-form-item__content {
+        .el-input {
+            border: none;
+            margin-bottom: 14px;
+
+            .el-input__wrapper {
+                padding: 0;
+
+                .el-input__inner {
+                    height: 50px;
+                    border: 1px solid #BFC4C8;
+                    border-right-width: 0px;
+
+                    border-radius: 4px;
+                    border-top-right-radius: 0px;
+                    border-bottom-right-radius: 0px;
+
+                    &:focus {
+                        border-color: #60BBAC;
+                    }
+                }
+
+                .el-input__suffix {
+                    background: transparent;
+                    border-top-right-radius: 4px;
+                    border-bottom-right-radius: 4px;
+                    padding-right: 10px;
+
+                    .el-button--text {
+                        color: #60BBAC;
+                    }
+
+                }
+
+            }
+        }
+    }
+}
