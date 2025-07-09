@@ -35,20 +35,28 @@ class AuthController extends BaseController
         }
 
         // Retrieve and sanitize inputs
-        $email = sanitize_email( $this->request->get( 'email' ) );
+        $login = sanitize_text_field( $this->request->get( 'email' ) );
         $password = sanitize_text_field( $this->request->get( 'password' ) );
         $remember_me = sanitize_text_field( $this->request->get( 'remember_me' ) );
 
+
         // Check if required fields are provided
-        if ( empty( $email ) || empty( $password ) ) {
-            return $this->response([
-                'message' => __( 'Email and password are required.', 'smart-auth' ),
-                'status'  => 'error',
-            ], 200);
-        }
+            if (empty($login) || empty($password)) {
+                return $this->response([
+                    'message' => __('Username/Email and password are required.', 'smart-auth'),
+                    'status'  => 'error',
+                ], 200);
+            }
+         // Check if the input is an email or username
+            if (is_email($login)) {
+                $user = get_user_by('email', $login);
+                if ($user) {
+                    $login = $user->user_login; // Use the username for authentication
+                }
+            }
 
         // Authenticate the user
-        $user = wp_authenticate( $email, $password );
+        $user = wp_authenticate( $login, $password );
 
         // Handle authentication errors
         if ( is_wp_error( $user ) ) {
@@ -234,6 +242,17 @@ class AuthController extends BaseController
             'url' =>$auth_page_url
         ], 200);
     }
+
+    /*
+     * Handles user password reset.
+     *
+     * This method retrieves the token and new password from the request, verifies the reset key,
+     * and resets the user's password if the verification is successful. It returns a success or
+     * error response based on the outcome.
+     *
+     * @return \WP_REST_Response The response object containing the password reset status.
+     */
+
     public function reset_password() {
         // Retrieve and sanitize inputs
         $token = sanitize_text_field( $this->request->get( 'token' ) );

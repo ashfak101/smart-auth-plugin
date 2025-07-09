@@ -47024,7 +47024,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
               return $setup.loginForm.email = $event;
             }),
-            placeholder: "Enter Your Email Address Here"
+            placeholder: "Enter Your Username/Email Address Here"
           }, null, 8 /* PROPS */, ["modelValue"])];
         }),
         _: 1 /* STABLE */

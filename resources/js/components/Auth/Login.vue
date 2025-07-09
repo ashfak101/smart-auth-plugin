@@ -15,7 +15,7 @@
         <el-form-item label="Username or Email" prop="email">
           <el-input
             v-model="loginForm.email"
-            placeholder="Enter Your Email Address Here"></el-input>
+            placeholder="Enter Your Username/Email Address Here"></el-input>
         </el-form-item>
 
         <el-form-item label="Password" prop="password">
