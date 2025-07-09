@@ -9,6 +9,8 @@ Router::get('general-settings', 'SettingsController@index');
 //Student logina and register
 Router::post('register', 'AuthController@register');
 Router::post('login', 'AuthController@login');
+Router::post('forgot-password', 'AuthController@forgot_password');
+Router::post('reset-password', 'AuthController@reset_password');
 //Membership purchase and payment
 // Router::get('get-membership-settings', 'SettingsController@get_membership_data');
 // Router::post('create-payment-intent', 'PaymentController@make_payment_intents');

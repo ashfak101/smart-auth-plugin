@@ -22,49 +22,23 @@
             label="First Name"
             prop="first_name"
             placeholder="Enter Your First Name Here">
-            <el-input v-model="registerForm.first_name"></el-input>
+            <el-input v-model="registerForm.first_name" placeholder="Enter your Last Name"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="Last Name" prop="last_name">
-            <el-input v-model="registerForm.last_name"></el-input>
+            <el-input v-model="registerForm.last_name" placeholder="Enter your Last Name"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
 
       <el-form-item label="Email" prop="email">
-        <el-input v-model="registerForm.email"></el-input>
+        <el-input v-model="registerForm.email" placeholder="Enter your Email"></el-input>
       </el-form-item>
 
       <el-form-item label="Password" prop="password">
-        <el-input type="password" v-model="registerForm.password"></el-input>
+        <el-input type="password" v-model="registerForm.password" placeholder="Enter your password"></el-input>
       </el-form-item>
-
-      <el-row :gutter="20">
-        <el-col :span="12">
-          <el-form-item label="Gender" prop="gender">
-            <el-select
-              v-model="registerForm.gender"
-              clearable
-              placeholder="Select Your Gender">
-              <el-option
-                v-for="item in ['Male', 'Female', 'Other']"
-                :key="item"
-                :label="item"
-                :value="item" />
-            </el-select>
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item label="Date of Birth" prop="date_of_birth">
-            <el-date-picker
-              v-model="registerForm.date_of_birth"
-              type="date"
-              placeholder="Select Date of Birth"
-              style="width: 100%"></el-date-picker>
-          </el-form-item>
-        </el-col>
-      </el-row>
 
       <el-form-item>
         <el-button
@@ -120,8 +94,6 @@ export default {
       last_name: '',
       email: '',
       password: '',
-      gender: '',
-      date_of_birth: '',
       term_condition: '',
     });
     const registerFormRef = ref(null);
@@ -159,20 +131,7 @@ export default {
           trigger: 'blur',
         },
       ],
-      gender: [
-        {
-          required: true,
-          message: 'Please select your gender',
-          trigger: 'change',
-        },
-      ],
-      date_of_birth: [
-        {
-          required: true,
-          message: 'Please select your date of birth',
-          trigger: 'change',
-        },
-      ],
+
       term_condition: [
         {
           required: true,

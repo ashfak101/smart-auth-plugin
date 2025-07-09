@@ -6,17 +6,17 @@ trait AppHelper
 {
     public static function smart_auth_app_vars()
     {
-        $yo_card_general_settings = self::getOption('smart_auth_general_settings', []);
+        $smart_auth_general_settings = self::getOption('smart_auth_general_settings', []);
         $home_url = home_url();
         $upload_dir         = wp_upload_dir();
         $uploadUrl          = esc_url($upload_dir['baseurl']) . DIRECTORY_SEPARATOR . SMART_AUTH_PLUGIN_ASSET_ID;
         $lost_password_url  = wp_lostpassword_url();
-        $profile_page_id    = isset($yo_card_general_settings['profile_page_id']) ? $yo_card_general_settings['profile_page_id'] : '';
-        $auth_page_id       = isset($yo_card_general_settings['auth_page_id']) ? $yo_card_general_settings['auth_page_id'] : '';
+        $profile_page_id    = isset($smart_auth_general_settings['profile_page_id']) ? $smart_auth_general_settings['profile_page_id'] : '';
+        $auth_page_id       = isset($smart_auth_general_settings['auth_page_id']) ? $smart_auth_general_settings['auth_page_id'] : '';
         $profile_page_url   = get_permalink($profile_page_id);
         $auth_page_url      = get_permalink($auth_page_id);
         $t_c_page_url       = esc_url($home_url . '/terms-and-conditions');
-        $currency           = isset($yo_card_general_settings['selected_currency']) ? $yo_card_general_settings['selected_currency'] : 'GBP';
+        $currency           = isset($smart_auth_general_settings['selected_currency']) ? $smart_auth_general_settings['selected_currency'] : 'GBP';
         $currency_symbol    = self::getAllowedCurrencySymble();
         $selected_symbol    = isset($currency_symbol[$currency]) ? $currency_symbol[$currency] : '£';
 

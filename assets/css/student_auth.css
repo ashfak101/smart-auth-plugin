@@ -71,12 +71,17 @@
   background: #000000;
 }
 
+.sa-student-profile-register .register-form .form-section-header {
+  margin: 0 auto;
+}
 .sa-student-profile-register .register-form .form-section-header h1 {
   font-size: 32px;
+  text-align: center;
 }
 .sa-student-profile-register .register-form .form-section-header p {
   font-size: 16px;
   color: #001324;
+  text-align: center;
 }
 .sa-student-profile-register .register-form .login-link {
   color: #60BBAC;
@@ -123,12 +128,13 @@
 }
 .sa-student-profile-register .register-form .register-button {
   color: #fff;
-  background: #60BBAC;
+  background: #001324;
+  width: 100%;
   border: none;
   padding: 20px 20px;
   font-size: 16px;
   transition: all 0.3s;
 }
 .sa-student-profile-register .register-form .register-button:hover {
-  background: #2E6668;
+  background: #000000;
 }
