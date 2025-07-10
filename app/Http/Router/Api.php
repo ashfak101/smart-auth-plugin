@@ -41,7 +41,8 @@ Router::get('search-subscribers', 'AdminController@search_subscribers_list');
 Router::post('permit-access', 'AdminController@permit_user_access');
 Router::post('revoke-access', 'AdminController@revoke_user_access');
 
-
+// wooCommerce
+Router::publicGet('get-all-products', 'WooCommerceController@get_all_products');
 //Webhook
 Router::publicPost('webhook-refund-stripe', 'WebhookController@handle_webhook_refund_stripe');
 Router::publicPost('webhook-refund-paypal', 'WebhookController@handle_webhook_refund_paypal');

@@ -72,7 +72,6 @@ export default {
     const { startLoading, stopLoading } = loader();
     const app_vars = window.smart_auth_app_vars;
     const is_logged_in = app_vars.is_logged_in;
-    const lost_password_url = '/auth/forgot-password';
     const profile_page_url = app_vars.profile_page;
     const loginForm = ref({
       email: '',

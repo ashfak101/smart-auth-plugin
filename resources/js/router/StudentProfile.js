@@ -69,7 +69,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    const app_vars = window.student_card_app_vars
+    const app_vars = window.smart_auth_app_vars
     const is_purchased = `${app_vars.is_purchased}`
     const is_remaining_days = `${app_vars.remaining_days}`
     const is_logged_in = `${app_vars.is_logged_in}`;
