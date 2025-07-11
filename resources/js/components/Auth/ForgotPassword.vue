@@ -23,7 +23,7 @@
 
         <el-form-item>
           <el-button type="primary" @click="handleLogin" class="login-button"
-            >Reset Password</el-button
+            >Submit</el-button
           >
         </el-form-item>
 
@@ -77,7 +77,8 @@ export default {
       ],
     };
 
-    const handleLogin = async () => {
+    const handleLogin = async (e) => {
+    e.preventDefault();
       loginFormRef.value.validate((validData) => {
         if (validData) {
           handleLoginSubmission();

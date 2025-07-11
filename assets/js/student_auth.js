@@ -46307,10 +46307,11 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
       }]
     };
     var handleLogin = /*#__PURE__*/function () {
-      var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+      var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(e) {
         return _regenerator().w(function (_context) {
           while (1) switch (_context.n) {
             case 0:
+              e.preventDefault();
               loginFormRef.value.validate(function (validData) {
                 if (validData) {
                   handleLoginSubmission();
@@ -46323,7 +46324,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
           }
         }, _callee);
       }));
-      return function handleLogin() {
+      return function handleLogin(_x) {
         return _ref.apply(this, arguments);
       };
     }();
@@ -46448,7 +46449,6 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
       stopLoading = _loader.stopLoading;
     var app_vars = window.smart_auth_app_vars;
     var is_logged_in = app_vars.is_logged_in;
-    var lost_password_url = '/auth/forgot-password';
     var profile_page_url = app_vars.profile_page;
     var loginForm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)({
       email: '',
@@ -46948,7 +46948,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "class": "login-button"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return _cache[2] || (_cache[2] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Reset Password")]);
+              return _cache[2] || (_cache[2] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Submit")]);
             }),
             _: 1 /* STABLE */,
             __: [2]

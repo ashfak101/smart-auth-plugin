@@ -161953,7 +161953,7 @@ var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_9__.createRouter)({
   routes: routes
 });
 router.beforeEach(function (to, from, next) {
-  var app_vars = window.student_card_app_vars;
+  var app_vars = window.smart_auth_app_vars;
   var is_purchased = "".concat(app_vars.is_purchased);
   var is_remaining_days = "".concat(app_vars.remaining_days);
   var is_logged_in = "".concat(app_vars.is_logged_in);
