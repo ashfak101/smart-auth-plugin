@@ -46284,21 +46284,11 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
       startLoading = _loader.startLoading,
       stopLoading = _loader.stopLoading;
     var formRef = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-    var cardFrontFileList = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
-    var cardBackFileList = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
     var app_vars = window.smart_auth_app_vars;
     console.log(app_vars);
-    var url = "".concat(app_vars.image_url, "/");
     var form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)({
       auth_page_id: '',
-      profile_page_id: '',
-      card_front_img: '',
-      card_back_img: '',
-      standard_card_yearly_amount: '',
-      standard_card_biennial_amount: '',
-      vip_card_yearly_amount: '',
-      vip_card_biennial_amount: '',
-      selected_currency: ''
+      profile_page_id: ''
     });
 
     // Validation rules
@@ -46311,48 +46301,12 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
         required: true,
         message: 'Profile Page is required',
         trigger: 'change'
-      }],
-      card_front_img: [{
-        required: true,
-        message: 'Card Front Image is required',
-        trigger: ''
-      }],
-      card_back_img: [{
-        required: true,
-        message: 'Card Back Image is required',
-        trigger: ''
-      }],
-      standard_card_yearly_amount: [{
-        required: true,
-        message: 'Standard Card Yearly Amount is required',
-        trigger: 'blur'
-      }],
-      standard_card_biennial_amount: [{
-        required: true,
-        message: 'Standard Card Biennial Amount is required',
-        trigger: 'blur'
-      }],
-      vip_card_yearly_amount: [{
-        required: true,
-        message: 'VIP Card Yearly Amount is required',
-        trigger: 'blur'
-      }],
-      vip_card_biennial_amount: [{
-        required: true,
-        message: 'VIP Card Biennial Amount is required',
-        trigger: 'blur'
-      }],
-      selected_currency: [{
-        required: true,
-        message: 'Currency is required',
-        trigger: 'change'
       }]
     };
     var wp_pages = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
-    var currencies = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
     var fetchSettings = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
-        var response, settings, isUrl, isUrl2, _t;
+        var response, settings, _t;
         return _regenerator().w(function (_context) {
           while (1) switch (_context.n) {
             case 0:
@@ -46366,46 +46320,8 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
               if (response.status === 'success') {
                 settings = response.settings;
                 wp_pages.value = settings.wp_pages;
-                currencies.value = settings.currencies;
                 form.value.auth_page_id = String(settings.auth_page_id);
                 form.value.profile_page_id = String(settings.profile_page_id);
-                isUrl = /^(http|https):\/\//.test(settings.card_front_img);
-                if (isUrl) {
-                  form.value.card_front_img = settings.card_front_img;
-                  cardFrontFileList.value = [{
-                    name: settings.card_front_img,
-                    url: settings.card_front_img,
-                    status: 'finished'
-                  }];
-                } else {
-                  form.value.card_front_img = settings.card_front_img;
-                  cardFrontFileList.value = [{
-                    name: settings.card_front_img,
-                    url: url + settings.card_front_img,
-                    status: 'finished'
-                  }];
-                }
-                isUrl2 = /^(http|https):\/\//.test(settings.card_back_img);
-                if (isUrl2) {
-                  form.value.card_back_img = settings.card_back_img;
-                  cardBackFileList.value = [{
-                    name: settings.card_back_img,
-                    url: settings.card_back_img,
-                    status: 'finished'
-                  }];
-                } else {
-                  form.value.card_back_img = settings.card_back_img;
-                  cardBackFileList.value = [{
-                    name: settings.card_back_img,
-                    url: url + settings.card_back_img,
-                    status: 'finished'
-                  }];
-                }
-                form.value.standard_card_yearly_amount = settings.standard_card_yearly_amount;
-                form.value.standard_card_biennial_amount = settings.standard_card_biennial_amount;
-                form.value.vip_card_yearly_amount = settings.vip_card_yearly_amount;
-                form.value.vip_card_biennial_amount = settings.vip_card_biennial_amount;
-                form.value.selected_currency = settings.selected_currency;
               } else {
                 error(response.message);
               }
@@ -46427,28 +46343,6 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
         return _ref.apply(this, arguments);
       };
     }();
-    var cardFrontFileChange = function cardFrontFileChange(file, uploadedFiles) {
-      if (file.raw.type.startsWith('image/')) {
-        form.value.card_front_img = file.raw;
-        cardFrontFileList.value = uploadedFiles.slice(-1);
-      } else {
-        form.value.card_front_img = '';
-        cardFrontFileList.value = [];
-        error('Invalid file type. Please upload an image');
-        return false;
-      }
-    };
-    var cardBackFileChange = function cardBackFileChange(file, uploadedFiles) {
-      if (file.raw.type.startsWith('image/')) {
-        form.value.card_back_img = file.raw;
-        cardBackFileList.value = uploadedFiles.slice(-1);
-      } else {
-        form.value.card_back_img = '';
-        cardBackFileList.value = [];
-        error('Invalid file type. Please upload an image');
-        return false;
-      }
-    };
 
     // Validate and submit the form
     var onSubmit = /*#__PURE__*/function () {
@@ -46484,13 +46378,6 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
               formData = new FormData();
               formData.append('auth_page_id', form.value.auth_page_id);
               formData.append('profile_page_id', form.value.profile_page_id);
-              formData.append('card_front_img', form.value.card_front_img);
-              formData.append('card_back_img', form.value.card_back_img);
-              formData.append('standard_card_yearly_amount', form.value.standard_card_yearly_amount);
-              formData.append('standard_card_biennial_amount', form.value.standard_card_biennial_amount);
-              formData.append('vip_card_yearly_amount', form.value.vip_card_yearly_amount);
-              formData.append('vip_card_biennial_amount', form.value.vip_card_biennial_amount);
-              formData.append('selected_currency', form.value.selected_currency);
               _context3.n = 2;
               return post('update-settings', formData, {
                 headers: {
@@ -46529,13 +46416,8 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
       form: form,
       rules: rules,
       wp_pages: wp_pages,
-      currencies: currencies,
       onSubmit: onSubmit,
-      formRef: formRef,
-      cardFrontFileList: cardFrontFileList,
-      cardFrontFileChange: cardFrontFileChange,
-      cardBackFileList: cardBackFileList,
-      cardBackFileChange: cardBackFileChange
+      formRef: formRef
     };
   }
 });
@@ -46642,9 +46524,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_el_option = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-option");
   var _component_el_select = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-select");
   var _component_el_form_item = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-form-item");
-  var _component_el_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-input");
   var _component_el_col = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-col");
-  var _component_el_upload = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-upload");
   var _component_el_row = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-row");
   var _component_el_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-button");
   var _component_el_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-form");
@@ -46661,7 +46541,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "main-center"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Header), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_cache[10] || (_cache[10] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "General Settings", -1 /* CACHED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_card, null, {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Header), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "General Settings", -1 /* CACHED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_card, null, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form, {
                 model: $setup.form,
@@ -46727,136 +46607,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                               }, 8 /* PROPS */, ["modelValue"])];
                             }),
                             _: 1 /* STABLE */
-                          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-                            label: "Std Card Yearly Amount",
-                            prop: "standard_card_yearly_amount"
-                          }, {
-                            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-                                modelValue: $setup.form.standard_card_yearly_amount,
-                                "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-                                  return $setup.form.standard_card_yearly_amount = $event;
-                                })
-                              }, null, 8 /* PROPS */, ["modelValue"])];
-                            }),
-                            _: 1 /* STABLE */
-                          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-                            label: "Std Card Biennial Amount",
-                            prop: "standard_card_biennial_amount"
-                          }, {
-                            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-                                modelValue: $setup.form.standard_card_biennial_amount,
-                                "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-                                  return $setup.form.standard_card_biennial_amount = $event;
-                                })
-                              }, null, 8 /* PROPS */, ["modelValue"])];
-                            }),
-                            _: 1 /* STABLE */
-                          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-                            label: "VIP Card Yearly Amount",
-                            prop: "vip_card_yearly_amount"
-                          }, {
-                            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-                                modelValue: $setup.form.vip_card_yearly_amount,
-                                "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-                                  return $setup.form.vip_card_yearly_amount = $event;
-                                })
-                              }, null, 8 /* PROPS */, ["modelValue"])];
-                            }),
-                            _: 1 /* STABLE */
-                          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-                            label: "VIP Card Biennial Amount",
-                            prop: "vip_card_biennial_amount"
-                          }, {
-                            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-                                modelValue: $setup.form.vip_card_biennial_amount,
-                                "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-                                  return $setup.form.vip_card_biennial_amount = $event;
-                                })
-                              }, null, 8 /* PROPS */, ["modelValue"])];
-                            }),
-                            _: 1 /* STABLE */
-                          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-                            label: "Currency",
-                            prop: "selected_currency"
-                          }, {
-                            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_select, {
-                                modelValue: $setup.form.selected_currency,
-                                "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
-                                  return $setup.form.selected_currency = $event;
-                                }),
-                                placeholder: "Select Currency"
-                              }, {
-                                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                                  return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.currencies, function (item) {
-                                    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_el_option, {
-                                      key: item,
-                                      label: item,
-                                      value: item
-                                    }, null, 8 /* PROPS */, ["label", "value"]);
-                                  }), 128 /* KEYED_FRAGMENT */))];
-                                }),
-                                _: 1 /* STABLE */
-                              }, 8 /* PROPS */, ["modelValue"])];
-                            }),
-                            _: 1 /* STABLE */
-                          })];
-                        }),
-                        _: 1 /* STABLE */
-                      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_col, {
-                        span: 12
-                      }, {
-                        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-                            label: "Card Front Image",
-                            prop: "card_front_img"
-                          }, {
-                            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_upload, {
-                                "class": "upload-demo",
-                                drag: "",
-                                "on-change": $setup.cardFrontFileChange,
-                                "file-list": $setup.cardFrontFileList,
-                                "list-type": "picture-card",
-                                "auto-upload": false
-                              }, {
-                                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                                  return _cache[7] || (_cache[7] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-                                    "class": "el-upload__text"
-                                  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Drag and drop file here, or "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("em", null, "click to upload")], -1 /* CACHED */)]);
-                                }),
-                                _: 1 /* STABLE */,
-                                __: [7]
-                              }, 8 /* PROPS */, ["on-change", "file-list"])];
-                            }),
-                            _: 1 /* STABLE */
-                          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-                            label: "Card Back Image",
-                            prop: "card_back_img"
-                          }, {
-                            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_upload, {
-                                "class": "upload-demo",
-                                drag: "",
-                                "on-change": $setup.cardBackFileChange,
-                                "file-list": $setup.cardBackFileList,
-                                "list-type": "picture-card",
-                                "auto-upload": false
-                              }, {
-                                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                                  return _cache[8] || (_cache[8] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-                                    "class": "el-upload__text"
-                                  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Drag and drop file here, or "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("em", null, "click to upload")], -1 /* CACHED */)]);
-                                }),
-                                _: 1 /* STABLE */,
-                                __: [8]
-                              }, 8 /* PROPS */, ["on-change", "file-list"])];
-                            }),
-                            _: 1 /* STABLE */
                           })];
                         }),
                         _: 1 /* STABLE */
@@ -46875,10 +46625,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                             "class": "setting-button"
                           }, {
                             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                              return _cache[9] || (_cache[9] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Save")]);
+                              return _cache[2] || (_cache[2] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Save")]);
                             }),
                             _: 1 /* STABLE */,
-                            __: [9]
+                            __: [2]
                           }, 8 /* PROPS */, ["onClick"])];
                         }),
                         _: 1 /* STABLE */
