@@ -77,55 +77,14 @@ class AdminController extends BaseController
 
         $existingSettings = self::getOption('smart_auth_general_settings', []);
 
-        if (! empty($_FILES['card_front_img']['name'])) {
-            // Get the WordPress upload directory
-            $upload_dir = wp_upload_dir();
-            $upload_path = $upload_dir['basedir'] . DIRECTORY_SEPARATOR . SMART_AUTH_PLUGIN_ASSET_ID;
+     
 
-            if (isset($existingSettings['card_front_img']) && !empty($existingSettings['card_front_img'])) {
-                $file = $upload_path . '/' . $existingSettings['card_front_img'];
-                unlink($file);
-            }
-
-            // Upload the new file
-            $card_front_img = self::handle_file_upload('card_front_img');
-            if (is_wp_error($card_front_img)) {
-                return $this->response($card_front_img->get_error_message(), 400);
-            }
-        } else {
-            $card_front_img = isset( $existingSettings['card_front_img'] ) && ! empty( $existingSettings['card_front_img'] ) ? $existingSettings['card_front_img'] : '';
-        }
-
-        if (! empty($_FILES['card_back_img']['name'])) {
-            // Get the WordPress upload directory
-            $upload_dir = wp_upload_dir();
-            $upload_path = $upload_dir['basedir'] . DIRECTORY_SEPARATOR . SMART_AUTH_PLUGIN_ASSET_ID;
-
-            if (isset($existingSettings['card_back_img']) && !empty($existingSettings['card_back_img'])) {
-                $file = $upload_path . '/' . $existingSettings['card_back_img'];
-                unlink($file);
-            }
-
-            // Upload the new file
-            $card_back_img = self::handle_file_upload('card_back_img');
-            if (is_wp_error($card_back_img)) {
-                return $this->response($card_back_img->get_error_message(), 400);
-            }
-        } else {
-            $card_back_img = isset( $existingSettings['card_back_img'] ) && ! empty( $existingSettings['card_back_img'] ) ? $existingSettings['card_back_img'] : '';
-        }
 
         // Prepare the data array to store the settings.
         $data = array(
             'auth_page_id'                  => intval($this->request->get('auth_page_id')),
             'profile_page_id'               => intval($this->request->get('profile_page_id')),
-            'card_front_img'                => sanitize_text_field( $card_front_img ),
-            'card_back_img'                 => sanitize_text_field(  $card_back_img ),
-            'standard_card_yearly_amount'   => intval($this->request->get('standard_card_yearly_amount')),
-            'standard_card_biennial_amount' => intval($this->request->get('standard_card_biennial_amount')),
-            'vip_card_yearly_amount'        => intval($this->request->get('vip_card_yearly_amount')),
-            'vip_card_biennial_amount'      => intval($this->request->get('vip_card_biennial_amount')),
-            'selected_currency'             => sanitize_text_field($this->request->get('selected_currency')),
+
         );
 
         // Update or insert the settings in the wp_options table.
