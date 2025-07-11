@@ -12,7 +12,7 @@ class ShortCodeHandler
     public function __construct()
     {
         add_shortcode('sa_student_profile', [$this, 'render_student_profile'] );
-        add_shortcode('sa_student_auth', [$this, 'sa_render_student_auth' ] );
+        add_shortcode('smart_auth', [$this, 'render_smart_auth' ] );
         add_shortcode('sa_promotions', [ $this, 'render_promotions'] );
     }
 
@@ -63,7 +63,7 @@ class ShortCodeHandler
         wp_localize_script(SMART_AUTH_PLUGIN_ASSET_ID, SMART_AUTH_PLUGIN_ASSET_VARS . '_app_vars', $this->smart_auth_app_vars());
     }
 
-    public function sa_render_student_auth()
+    public function render_smart_auth()
     {
         $this->load_student_auth_assets();
         ob_start(); // Start output buffering
