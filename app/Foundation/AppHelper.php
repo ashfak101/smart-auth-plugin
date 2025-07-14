@@ -50,7 +50,6 @@ trait AppHelper
             'auth_page'         => $auth_page_url,
             'profile_page'      => $profile_page_url,
             't_c_page'          => $t_c_page_url,
-            'remaining_days'    => $day_remaining,
             'currency'          => $selected_symbol,
             'currency_Name'     => $currency,
             'rest_info'         => array (

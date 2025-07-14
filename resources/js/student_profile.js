@@ -2,11 +2,12 @@ import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
 import { createApp } from 'vue';
 import router from './router/StudentProfile';
+import MyAccounts from './components/Student/MyAccounts.vue'
 
-import Student from './components/Student/Student.vue';
-const app = createApp(Student );
+
+const app = createApp(MyAccounts );
 
 app.use(router);
 app.use(ElementPlus);
 
-app.mount('#student_profile_all_tabs');
+app.mount('#my_profile_all_tabs');

@@ -1,11 +1,11 @@
 <template>
-  <div class="sa-student-profile-wrapper">
+  <div class="smart-auth-my-account">
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Student",
+  name: "MyAccounts",
 };
 </script>

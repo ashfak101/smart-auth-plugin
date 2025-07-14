@@ -11,7 +11,7 @@ class ShortCodeHandler
 
     public function __construct()
     {
-        add_shortcode('sa_student_profile', [$this, 'render_student_profile'] );
+        add_shortcode('smart-auth-my-accounts', [$this, 'render_student_profile'] );
         add_shortcode('smart_auth', [$this, 'render_smart_auth' ] );
         add_shortcode('sa_promotions', [ $this, 'render_promotions'] );
     }
@@ -20,7 +20,7 @@ class ShortCodeHandler
     {
         $this->load_student_profile_assets();
         ob_start(); // Start output buffering
-        echo '<div id="student_profile_all_tabs"></div>';
+        echo '<div id="my_profile_all_tabs"></div>';
         return ob_get_clean(); // Return the buffered content
     }
 
@@ -67,7 +67,7 @@ class ShortCodeHandler
     {
         $this->load_student_auth_assets();
         ob_start(); // Start output buffering
-        echo '<div id="sa_student_profile_auth"></div>';
+        echo '<div id="smart-auth-my-accounts"></div>';
         return ob_get_clean(); // Return the buffered content
     }
 
