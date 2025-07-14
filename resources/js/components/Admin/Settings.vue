@@ -37,10 +37,7 @@
                       :value="item.id"></el-option>
                   </el-select>
                 </el-form-item>
-
-
               </el-col>
-
             </el-row>
             <el-row>
               <el-col :span="24">
@@ -85,7 +82,6 @@ export default {
     const form = ref({
       auth_page_id: '',
       profile_page_id: '',
-
     });
 
     // Validation rules
@@ -100,11 +96,9 @@ export default {
           trigger: 'change',
         },
       ],
-
     };
 
     const wp_pages = ref([]);
-
 
     const fetchSettings = async () => {
       startLoading();
@@ -126,8 +120,6 @@ export default {
       stopLoading();
     };
 
-
-
     // Validate and submit the form
     const onSubmit = async () => {
       formRef.value.validate((valid) => {
@@ -146,7 +138,6 @@ export default {
         const formData = new FormData();
         formData.append('auth_page_id', form.value.auth_page_id);
         formData.append('profile_page_id', form.value.profile_page_id);
-
 
         const response = await post('update-settings', formData, {
           headers: { 'Content-Type': 'multipart/form-data' },
@@ -176,7 +167,6 @@ export default {
 
       onSubmit,
       formRef,
-
     };
   },
 };

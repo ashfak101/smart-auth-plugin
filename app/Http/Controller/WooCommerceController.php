@@ -36,4 +36,31 @@ class WooCommerceController extends BaseController
 
        return $this->response($products);
    }
+//    get woocommerce orders by user id
+   public function get_orders_by_user_id($user_id)
+   {
+       // Get orders for a specific user
+       $args = [
+           'customer_id' => $user_id,
+           'status' => 'any', // Get all statuses
+           'limit' => -1, // Get all orders
+       ];
+
+       $orders = wc_get_orders($args);
+       $order_data = [];
+
+       foreach ($orders as $order) {
+           $order_data[] = [
+               'id' => $order->get_id(),
+               'date' => $order->get_date_created()->date('Y-m-d H:i:s'),
+               'total' => $order->get_total(),
+               'status' => $order->get_status(),
+           ];
+       }
+
+       return [
+              'status' => 'success',
+              'data' => $order_data,
+       ];
+   }
 }

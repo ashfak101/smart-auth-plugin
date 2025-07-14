@@ -6,6 +6,8 @@ trait AppHelper
 {
     public static function smart_auth_app_vars()
     {
+        // get the current user ID and other general settings
+        $user_id=get_current_user_id();
         $smart_auth_general_settings = self::getOption('smart_auth_general_settings', []);
         $home_url = home_url();
         $upload_dir         = wp_upload_dir();
@@ -34,12 +36,6 @@ trait AppHelper
             $membership_data = [];
         }
 
-        $is_purchased      = isset($membership_data['_is_purchased']) && 'yes' === $membership_data['_is_purchased'] ? true : false;
-        $membership_type   = isset($membership_data['_membership_type']) ? $membership_data['_membership_type'] : false;
-        $valid_till        = isset($membership_data['_valid_till']) ? $membership_data['_valid_till'] : '';//$valid_till        = '2026-12-31';
-        $expire_date       = date_i18n(get_option('date_format'), strtotime($valid_till));
-        $is_expired        = strtotime($expire_date) > strtotime('now') ? true : false;
-        $day_remaining     = floor((strtotime($expire_date) - strtotime('now')) / (60 * 60 * 24));
 
 
 
@@ -49,8 +45,7 @@ trait AppHelper
             'plugin_assets'     => SMART_AUTH_PLUGIN_URL . 'assets/',
             'image_url'         => $uploadUrl,
             'is_logged_in'      => is_user_logged_in(),
-            'is_purchased'      => $is_purchased,
-            'membership_type'   => $membership_type,
+            'user_id'           => $user_id,
             'lost_password'     => $lost_password_url,
             'auth_page'         => $auth_page_url,
             'profile_page'      => $profile_page_url,
@@ -58,9 +53,6 @@ trait AppHelper
             'remaining_days'    => $day_remaining,
             'currency'          => $selected_symbol,
             'currency_Name'     => $currency,
-
-            'card_expire_date'  => $expire_date,
-            'is_card_expired'   => $is_expired,
             'rest_info'         => array (
                 'base_url'      => esc_url_raw( rest_url() ),
                 'rest_url'      => rest_url('smart-auth' . '/v2'),
