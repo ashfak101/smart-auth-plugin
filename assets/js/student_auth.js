@@ -158704,7 +158704,7 @@ __webpack_require__.r(__webpack_exports__);
 var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)(_components_Auth_Auth_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
 app.use(_router_StudentAuth__WEBPACK_IMPORTED_MODULE_2__["default"]);
 app.use(element_plus__WEBPACK_IMPORTED_MODULE_4__["default"]);
-app.mount('#sa_student_profile_auth');
+app.mount('#smart-auth-my-accounts');
 })();
 
 /******/ })()

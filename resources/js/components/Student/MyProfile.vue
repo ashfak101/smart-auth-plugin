@@ -5,24 +5,10 @@
         <Menu />
         <el-row :gutter="30" class="student-profile">
           <!-- First Column: Profile Picture -->
-          <el-col :span="6">
-            <h3>Profile Picture</h3>
 
-            <el-upload
-              class="upload-demo"
-              drag
-              :on-change="onFileChange"
-              :file-list="fileList"
-              list-type="picture-card"
-              :auto-upload="false">
-              <div class="el-upload__text">
-                Drag and drop file here, or <em>click to upload</em>
-              </div>
-            </el-upload>
-          </el-col>
 
           <!-- Second Column: Personal Details -->
-          <el-col :span="9" class="m-l-dashed">
+          <el-col :span="9" class="">
             <h3>Personal Details</h3>
             <el-form
               ref="personalForm"
@@ -40,21 +26,7 @@
               <el-form-item label="Email" prop="email">
                 <el-input v-model="personalDetails.email" disabled></el-input>
               </el-form-item>
-              <el-form-item label="Date of Birth" prop="dob">
-                <el-date-picker
-                  v-model="personalDetails.dob"
-                  type="date"
-                  placeholder="Pick a date"></el-date-picker>
-              </el-form-item>
-              <el-form-item label="Gender" prop="gender">
-                <el-select
-                  v-model="personalDetails.gender"
-                  placeholder="Select">
-                  <el-option label="Male" value="male"></el-option>
-                  <el-option label="Female" value="female"></el-option>
-                  <el-option label="Other" value="other"></el-option>
-                </el-select>
-              </el-form-item>
+
             </el-form>
           </el-col>
 
@@ -142,8 +114,7 @@ export default {
       first_name: '',
       last_name: '',
       email: '',
-      dob: '',
-      gender: '',
+
     });
 
     const personalDetailsRules = {
@@ -168,20 +139,7 @@ export default {
           trigger: 'blur',
         },
       ],
-      dob: [
-        {
-          required: true,
-          message: 'Please enter your date of birth',
-          trigger: 'blur',
-        },
-      ],
-      gender: [
-        {
-          required: true,
-          message: 'Please select your gender',
-          trigger: 'change',
-        },
-      ],
+
     };
 
     const addressDetails = ref({

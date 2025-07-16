@@ -21,7 +21,7 @@ Router::post('reset-password', 'AuthController@reset_password');
 Router::get('get-profile', 'UserController@get_profile');
 Router::post('profile-picture', 'UserController@profile_picture');
 Router::post('save-profile', 'UserController@save_profile');
-Router::get('get-my-card', 'UserController@get_my_card');
+
 Router::post('change-password', 'UserController@change_password');
 
 Router::get('get-history', 'UserController@browsing_history');

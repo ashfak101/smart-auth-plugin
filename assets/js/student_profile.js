@@ -46519,9 +46519,7 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
     var personalDetails = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)({
       first_name: '',
       last_name: '',
-      email: '',
-      dob: '',
-      gender: ''
+      email: ''
     });
     var personalDetailsRules = {
       first_name: [{
@@ -46538,16 +46536,6 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
         required: true,
         message: 'Please enter your email',
         trigger: 'blur'
-      }],
-      dob: [{
-        required: true,
-        message: 'Please enter your date of birth',
-        trigger: 'blur'
-      }],
-      gender: [{
-        required: true,
-        message: 'Please select your gender',
-        trigger: 'change'
       }]
     };
     var addressDetails = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)({
@@ -47076,14 +47064,10 @@ var _hoisted_1 = {
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Menu = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Menu");
-  var _component_el_upload = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-upload");
-  var _component_el_col = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-col");
   var _component_el_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-input");
   var _component_el_form_item = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-form-item");
-  var _component_el_date_picker = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-date-picker");
-  var _component_el_option = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-option");
-  var _component_el_select = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-select");
   var _component_el_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-form");
+  var _component_el_col = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-col");
   var _component_el_row = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-row");
   var _component_el_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-button");
   var _component_el_main = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-main");
@@ -47101,35 +47085,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "class": "student-profile"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" First Column: Profile Picture "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_col, {
-                span: 6
-              }, {
-                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [_cache[11] || (_cache[11] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Profile Picture", -1 /* CACHED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_upload, {
-                    "class": "upload-demo",
-                    drag: "",
-                    "on-change": $setup.onFileChange,
-                    "file-list": $setup.fileList,
-                    "list-type": "picture-card",
-                    "auto-upload": false
-                  }, {
-                    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                      return _cache[10] || (_cache[10] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-                        "class": "el-upload__text"
-                      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Drag and drop file here, or "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("em", null, "click to upload")], -1 /* CACHED */)]);
-                    }),
-                    _: 1 /* STABLE */,
-                    __: [10]
-                  }, 8 /* PROPS */, ["on-change", "file-list"])];
-                }),
-                _: 1 /* STABLE */,
-                __: [11]
-              }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Second Column: Personal Details "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_col, {
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" First Column: Profile Picture "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Second Column: Personal Details "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_col, {
                 span: 9,
-                "class": "m-l-dashed"
+                "class": ""
               }, {
                 "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [_cache[12] || (_cache[12] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Personal Details", -1 /* CACHED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form, {
+                  return [_cache[8] || (_cache[8] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Personal Details", -1 /* CACHED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form, {
                     ref: "personalForm",
                     "label-position": "top",
                     model: $setup.personalDetails,
@@ -47178,62 +47139,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                           }, null, 8 /* PROPS */, ["modelValue"])];
                         }),
                         _: 1 /* STABLE */
-                      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-                        label: "Date of Birth",
-                        prop: "dob"
-                      }, {
-                        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_date_picker, {
-                            modelValue: $setup.personalDetails.dob,
-                            "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-                              return $setup.personalDetails.dob = $event;
-                            }),
-                            type: "date",
-                            placeholder: "Pick a date"
-                          }, null, 8 /* PROPS */, ["modelValue"])];
-                        }),
-                        _: 1 /* STABLE */
-                      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-                        label: "Gender",
-                        prop: "gender"
-                      }, {
-                        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_select, {
-                            modelValue: $setup.personalDetails.gender,
-                            "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-                              return $setup.personalDetails.gender = $event;
-                            }),
-                            placeholder: "Select"
-                          }, {
-                            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_option, {
-                                label: "Male",
-                                value: "male"
-                              }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_option, {
-                                label: "Female",
-                                value: "female"
-                              }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_option, {
-                                label: "Other",
-                                value: "other"
-                              })];
-                            }),
-                            _: 1 /* STABLE */
-                          }, 8 /* PROPS */, ["modelValue"])];
-                        }),
-                        _: 1 /* STABLE */
                       })];
                     }),
                     _: 1 /* STABLE */
                   }, 8 /* PROPS */, ["model", "rules"])];
                 }),
                 _: 1 /* STABLE */,
-                __: [12]
+                __: [8]
               }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Third Column: Address "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_col, {
                 span: 9,
                 "class": "m-l-dashed"
               }, {
                 "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [_cache[13] || (_cache[13] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Address", -1 /* CACHED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form, {
+                  return [_cache[9] || (_cache[9] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Address", -1 /* CACHED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form, {
                     ref: "addressForm",
                     "label-position": "top",
                     model: $setup.addressDetails,
@@ -47249,7 +47167,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
                             modelValue: $setup.addressDetails.house_name,
-                            "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+                            "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
                               return $setup.addressDetails.house_name = $event;
                             }),
                             placeholder: "House No/ Name"
@@ -47263,7 +47181,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
                             modelValue: $setup.addressDetails.address_line_two,
-                            "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+                            "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
                               return $setup.addressDetails.address_line_two = $event;
                             }),
                             placeholder: "Address Line Two"
@@ -47277,7 +47195,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
                             modelValue: $setup.addressDetails.town,
-                            "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
+                            "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
                               return $setup.addressDetails.town = $event;
                             }),
                             placeholder: "Town"
@@ -47291,7 +47209,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
                             modelValue: $setup.addressDetails.postcode,
-                            "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
+                            "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
                               return $setup.addressDetails.postcode = $event;
                             }),
                             placeholder: "Postcode"
@@ -47304,7 +47222,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
                             modelValue: $setup.addressDetails.country,
-                            "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
+                            "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
                               return $setup.addressDetails.country = $event;
                             }),
                             placeholder: "Country"
@@ -47317,7 +47235,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   }, 8 /* PROPS */, ["model", "rules"])];
                 }),
                 _: 1 /* STABLE */,
-                __: [13]
+                __: [9]
               })];
             }),
             _: 1 /* STABLE */
@@ -47334,10 +47252,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     "class": "primary-button"
                   }, {
                     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                      return _cache[14] || (_cache[14] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Save")]);
+                      return _cache[10] || (_cache[10] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Save")]);
                     }),
                     _: 1 /* STABLE */,
-                    __: [14]
+                    __: [10]
                   }, 8 /* PROPS */, ["onClick"])];
                 }),
                 _: 1 /* STABLE */

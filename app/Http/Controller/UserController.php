@@ -79,8 +79,7 @@ class UserController extends BaseController
         $first_name    = sanitize_text_field( $this->request->get( 'first_name' ) );
         $last_name     = sanitize_text_field( $this->request->get( 'last_name' ) );
         $email         = sanitize_email( $this->request->get( 'email' ) );
-        $dob           = sanitize_text_field( $this->request->get( 'dob' ) );
-        $gender        = sanitize_text_field( $this->request->get( 'gender' ) );
+        
         $house_name    = sanitize_text_field( $this->request->get( 'house_name' ) );
         $address_line_two = sanitize_text_field( $this->request->get( 'address_line_two' ) );
         $town          = sanitize_text_field( $this->request->get( 'town' ) );
@@ -303,67 +302,5 @@ class UserController extends BaseController
         }
     }
 
-    public function get_my_card( \WP_REST_Request $request )
-    {
-        // Get the current user
-        $current_user = wp_get_current_user();
 
-        // Check if the user is logged in
-        if ( is_user_logged_in() ) {
-            $current_user = wp_get_current_user();
-            $user_email     = $current_user->user_email;
-            $user_id        = $current_user->ID;
-
-            $first_name     = get_user_meta($user_id, 'first_name', true);
-            $last_name      = get_user_meta($user_id, 'last_name', true);
-            $name           = $first_name . ' ' . $last_name;
-            $gender         = get_user_meta($user_id, 'gender', true);
-            $dob            = get_user_meta($user_id, 'dob', true);
-            $dob            = date_i18n(get_option('date_format'), strtotime($dob));
-            $profile_image  = get_user_meta($user_id, 'profile_picture', true);
-
-            $yo_card_general_settings = self::getOption('smart_auth_general_settings', []);
-            $yo_card_back_img   = isset($yo_card_general_settings['card_front_img']) ? $yo_card_general_settings['card_front_img'] : SMART_AUTH_PLUGIN_URL . 'assets/img/yo-card-back.jpg';
-            $yo_card_front_img  = isset($yo_card_general_settings['card_back_img']) ? $yo_card_general_settings['card_back_img'] : SMART_AUTH_PLUGIN_URL . 'assets/img/yo-card-front.jpg';
-
-            $membership         = get_user_meta( $user_id, 'yo_student_card_membership', true );
-            $membership_meta    = maybe_unserialize( $membership );
-            if ( ! is_array($membership_meta ) ) {
-                $membership_data = [];
-            } else {
-                $membership_data = $membership_meta;
-            }
-
-            $membership_type   = isset($membership_data['_membership_type']) ? $membership_data['_membership_type'] : false;
-            $valid_till        = isset($membership_data['_valid_till']) ? $membership_data['_valid_till'] : '';
-            $expire_date       = date_i18n(get_option('date_format'), strtotime($valid_till));
-            $is_expired        = strtotime($expire_date) > strtotime('now') ? true : false;
-            $day_remaining     = floor((strtotime($expire_date) - strtotime('now')) / (60 * 60 * 24));
-            $card_no           = isset($membership_data['_yo_card_no']) ? $membership_data['_yo_card_no'] : '';
-
-            $data = [
-                'name'          => $name,
-                'email'         => $user_email,
-                'dob'           => $dob,
-                'profile_image' => $profile_image,
-                'gender'        => $gender,
-                'card_front'    => $yo_card_front_img,
-                'card_back'     => $yo_card_back_img,
-                'expire_date'   => $expire_date,
-                'is_expired'    => $is_expired,
-                'card_type'     => $membership_type,
-                'day_remaining' => $day_remaining,
-                'card_no'       => $card_no,
-            ];
-            return $this->response([
-                'data' => $data,
-                'status' => 'success',
-            ], 200);
-        } else {
-            return $this->response([
-                'message' => 'You must need to logged in',
-                'status' => 'error',
-            ], 200);
-        }
-    }
 }

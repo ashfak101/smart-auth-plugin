@@ -23,12 +23,11 @@ class ValidatorHandler extends Validator
      */
     public static function validateSaveProfileRequest( Request $request ) {
         return $request->validate(
-            $request->only(['name', 'email', 'dob', 'gender', 'house_name', 'town', 'postcode', 'country']),
+            $request->only(['name', 'email',  'house_name', 'town', 'postcode', 'country']),
             [
                 'name'        => 'required',
                 'email'       => 'required',
-                'dob'         => 'required',
-                'gender'      => 'required',
+
                 'house_name'  => 'required',
                 'town'        => 'required',
                 'postcode'    => 'required',
@@ -37,8 +36,6 @@ class ValidatorHandler extends Validator
             [
                 'name.required'        => __( 'Student name is required.', 'smart-auth' ),
                 'email.required'       => __( 'Email address is required.', 'smart-auth' ),
-                'dob.required'         => __( 'Date of Birth is required.', 'smart-auth' ),
-                'gender.required'      => __( 'Gender is required.', 'smart-auth' ),
                 'house_name.required'  => __( 'House name is required.', 'smart-auth' ),
                 'town.required'        => __( 'Town is required.', 'smart-auth' ),
                 'postcode.required'    => __( 'Postcode is required.', 'smart-auth' ),
@@ -68,28 +65,16 @@ class ValidatorHandler extends Validator
     public static function validateGeneralSettings( Request $request)
     {
         return $request->validate(
-            $request->only(['auth_page_id', 'profile_page_id', 'standard_card_yearly_amount', 'standard_card_biennial_amount', 'vip_card_yearly_amount', 'vip_card_biennial_amount', 'selected_currency']),
+            $request->only(['auth_page_id', 'profile_page_id', ]),
             [
                 'auth_page_id'                  => 'required',
                 'profile_page_id'               => 'required',
-                'standard_card_yearly_amount'   => 'required|numeric',
-                'standard_card_biennial_amount' => 'required|numeric',
-                'vip_card_yearly_amount'        => 'required|numeric',
-                'vip_card_biennial_amount'      => 'required|numeric',
-                'selected_currency'             => 'required',
+
             ],
             [
                 'auth_page_id.required'                  => __( 'Auth page ID is required.', 'smart-auth' ),
                 'profile_page_id.required'               => __( 'Profile page ID is required.', 'smart-auth' ),
-                'standard_card_yearly_amount.required'   => __( 'Standard card yearly amount is required.', 'smart-auth' ),
-                'standard_card_yearly_amount.numeric'    => __( 'Standard card yearly amount must be a number.', 'smart-auth' ),
-                'standard_card_biennial_amount.required' => __( 'Standard card biennial amount is required.', 'smart-auth' ),
-                'standard_card_biennial_amount.numeric'  => __( 'Standard card biennial amount must be a number.', 'smart-auth' ),
-                'vip_card_yearly_amount.required'        => __( 'VIP card yearly amount is required.', 'smart-auth' ),
-                'vip_card_yearly_amount.numeric'         => __( 'VIP card yearly amount must be a number.', 'smart-auth' ),
-                'vip_card_biennial_amount.required'      => __( 'VIP card biennial amount is required.', 'smart-auth' ),
-                'vip_card_biennial_amount.numeric'       => __( 'VIP card biennial amount must be a number.', 'smart-auth' ),
-                'selected_currency.required'             => __( 'Currency is required.', 'smart-auth' ),
+
             ]
         );
     }
