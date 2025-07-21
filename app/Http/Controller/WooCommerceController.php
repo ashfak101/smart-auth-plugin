@@ -37,30 +37,97 @@ class WooCommerceController extends BaseController
        return $this->response($products);
    }
 //    get woocommerce orders by user id
-   public function get_orders_by_user_id($user_id)
-   {
-       // Get orders for a specific user
-       $args = [
-           'customer_id' => $user_id,
-           'status' => 'any', // Get all statuses
-           'limit' => -1, // Get all orders
-       ];
 
-       $orders = wc_get_orders($args);
-       $order_data = [];
+       public function get_orders_by_user_id($request)
+{
+    // Get the user ID from the query parameters
+    $user_id = $request->get_param('user_id');
 
-       foreach ($orders as $order) {
-           $order_data[] = [
-               'id' => $order->get_id(),
-               'date' => $order->get_date_created()->date('Y-m-d H:i:s'),
-               'total' => $order->get_total(),
-               'status' => $order->get_status(),
-           ];
-       }
+    // Validate the user ID
+    if (!is_numeric($user_id) || $user_id <= 0) {
+        return [
+            'status' => 'error',
+            'message' => 'Invalid user ID',
+        ];
+    }
 
-       return [
-              'status' => 'success',
-              'data' => $order_data,
-       ];
-   }
+    // Get orders for the specified user
+    $args = [
+        'customer_id' => $user_id,
+        'status' => 'any', // Get all statuses
+        'limit' => -1, // Get all orders
+    ];
+
+    $orders = wc_get_orders($args);
+    $order_data = [];
+
+    // Get WooCommerce currency
+    $currency = get_woocommerce_currency();
+
+    foreach ($orders as $order) {
+        $order_data[] = [
+            'id' => $order->get_id(),
+            'date' => $order->get_date_created()->date('Y-m-d H:i:s'),
+            'total' => $order->get_total(),
+            'currency' => $currency, // Add currency to the response
+            'status' => $order->get_status(),
+        ];
+    }
+
+    return [
+        'status' => 'success',
+        'data' => $order_data,
+    ];
+}
+public function get_single_order_details($request)
+{
+    // Get the order ID from the query parameters
+    $order_id = $request->get_param('order_id');
+
+    // Validate the order ID
+    if (!is_numeric($order_id) || $order_id <= 0) {
+        return [
+            'status' => 'error',
+            'message' => 'Invalid order ID',
+        ];
+    }
+
+    // Fetch the order using the correct order ID
+    $order = wc_get_order($order_id);
+    if (!$order) {
+        return [
+            'status' => 'error',
+            'message' => 'Order not found',
+        ];
+    }
+
+    // Get order items
+    $order_items = $order->get_items();
+    $items = [];
+    foreach ($order_items as $item_id => $item) {
+        $product = $item->get_product();
+        $items[] = [
+            'product_id' => $product ? $product->get_id() : null,
+            'product_name' => $product ? $product->get_name() : null,
+            'quantity' => $item->get_quantity(),
+            'total' => $item->get_total(),
+            'subtotal' => $item->get_subtotal(),
+            'price' => $product ? $product->get_price() : null,
+            'image' => $product ? wp_get_attachment_url($product->get_image_id()) : null,
+        ];
+    }
+
+    // Return the order details
+    return [
+        'status' => 'success',
+        'data' => [
+            'order_id' => $order->get_id(),
+            'date_created' => $order->get_date_created()->date('Y-m-d H:i:s'),
+            'total' => $order->get_total(),
+            'currency' => get_woocommerce_currency(),
+            'status' => $order->get_status(),
+            'items' => $items,
+        ],
+    ];
+}
 }

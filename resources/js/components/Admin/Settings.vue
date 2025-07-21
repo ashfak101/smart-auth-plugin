@@ -104,7 +104,7 @@ export default {
       startLoading();
       try {
         const response = await get('admin-settings');
-        console.log(response);
+      
         if (response.status === 'success') {
           const settings = response.settings;
           wp_pages.value = settings.wp_pages;

@@ -4,6 +4,7 @@ import { createRouter, createWebHashHistory } from "vue-router"
 import ChangePassword from '../components/Student/ChangePassword.vue'
 
 import MyProfile from '../components/Student/MyProfile.vue'
+import Order from "../components/Student/Order.vue"
 
 
 const routes = [
@@ -22,6 +23,11 @@ const routes = [
         path: '/change-password',
         name: 'change-password',
         component: ChangePassword
+    },
+    {
+        path: '/orders',
+        name: 'orders',
+        component: Order
     },
 
 ]

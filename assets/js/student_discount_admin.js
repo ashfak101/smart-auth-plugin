@@ -46316,7 +46316,6 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
               return get('admin-settings');
             case 2:
               response = _context.v;
-              console.log(response);
               if (response.status === 'success') {
                 settings = response.settings;
                 wp_pages.value = settings.wp_pages;
