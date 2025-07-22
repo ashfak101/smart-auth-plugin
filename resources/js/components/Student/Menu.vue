@@ -79,3 +79,10 @@ export default {
   },
 };
 </script>
+
+<style>
+.el-header {
+  background-color: #f5f5f5;
+  padding: 10px;
+}
+</style>

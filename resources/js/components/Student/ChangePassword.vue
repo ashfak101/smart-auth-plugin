@@ -5,7 +5,7 @@
         <div class="dashboard-container">
           <Menu />
           <el-row :gutter="30" class="mt change-password">
-            <el-col :span="12" :offset="6">
+            <el-col  :xs="24" :sm="24" :md="8" :lg="9" :xl="11">
               <h3>Change Password</h3>
               <el-form
                 ref="changePasswordForm"

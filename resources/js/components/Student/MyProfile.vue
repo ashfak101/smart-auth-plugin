@@ -8,7 +8,7 @@
 
 
           <!-- Second Column: Personal Details -->
-          <el-col :span="9" class="">
+          <el-col  :xs="24" :sm="24" :md="8" :lg="9" :xl="11" class="">
             <h3>Personal Details</h3>
             <el-form
               ref="personalForm"
@@ -31,7 +31,7 @@
           </el-col>
 
           <!-- Third Column: Address -->
-          <el-col :span="9" class="m-l-dashed">
+          <el-col  :xs="24" :sm="24" :md="8" :lg="9" :xl="11" class="m-l-dashed">
             <h3>Address</h3>
             <el-form
               ref="addressForm"
@@ -74,7 +74,7 @@
         </el-row>
 
         <el-row>
-          <el-col :span="24" class="text-right">
+          <el-col :span="12" class="text-left">
             <el-button
               type="primary"
               @click="validateAndSaveProfile"
