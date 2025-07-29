@@ -16,6 +16,10 @@
         <el-menu-item index="orders" :to="{ path: '/orders' }"
           >Orders</el-menu-item
         >
+        <el-menu-item @click="handlelogout"
+          class="logout-item"
+          >Log out</el-menu-item
+        >
       </el-menu>
       <div class="h-6" />
     </div>
@@ -25,12 +29,14 @@
 <script>
 import { onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { useAppHelper } from '../../Composable/appHelper';
 
 export default {
   name: 'Menu',
   setup() {
     const route = useRoute(); // Get the current route
     const router = useRouter();
+    const { get, post } = useAppHelper();
     const activeIndex = ref('');
     const app_vars = window.smart_auth_app_vars;
     const is_logged_in = `${app_vars.is_logged_in}`;
@@ -71,10 +77,21 @@ export default {
       // Navigate to the selected route when a menu item is clicked
       router.push(`/${key}`);
     };
+    const handlelogout = async () => {
+      const response = await post('logout');
+      if (response.status === 'success') {
+          window.location.href = `${app_vars.auth_page}`; // Redirect to the auth page
+        window.location.reload();// Reload the page to reflect logout
+      } else {
+        console.error('Logout failed:', response.message);
+      }
+    };
+    // Perform logout logic here, e.g., clear session, redirect to login page
 
     return {
       activeIndex,
       handleSelect,
+      handlelogout,
     };
   },
 };
@@ -82,7 +99,11 @@ export default {
 
 <style>
 .el-header {
-  background-color: #f5f5f5;
-  padding: 10px;
+ margin-bottom: 20px;
+}
+.el-menu--horizontal.el-menu{
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #e4e7ed;
+    margin-left: -15px;
 }
 </style>

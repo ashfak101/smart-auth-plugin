@@ -23,6 +23,7 @@ Router::post('profile-picture', 'UserController@profile_picture');
 Router::post('save-profile', 'UserController@save_profile');
 
 Router::post('change-password', 'UserController@change_password');
+Router::post('logout', 'UserController@user_logout');
 
 Router::get('get-history', 'UserController@browsing_history');
 Router::get('get-saved-offers', 'UserController@get_saved_offers');

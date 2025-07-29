@@ -7,39 +7,48 @@
           <div class="order-container">
             <h2 class="order-title">My Orders</h2>
             <el-card shadow="hover" class="order-card">
-              <el-table
-                v-if="orders.length > 0"
-                :data="orders"
-                border
-                style="width: 100%">
-                <el-table-column prop="id" label="Order ID" />
-                <el-table-column prop="date" label="Date" />
-                <el-table-column label="Status">
-                  <template #default="scope">
-                    <span
-                      :class="[
-                        'status-badge',
-                        getStatusClass(scope.row.status),
-                      ]">
-                      {{ scope.row.status }}
-                    </span>
-                  </template>
-                </el-table-column>
-                <el-table-column prop="total" label="Total Amount" />
-                <el-table-column label="Actions">
-                  <template #default="scope">
-                    <el-button
-                      type="primary"
-                      size="small"
-                      class="view-order-button"
-                      @click="viewOrderDetails(scope.row.id)"
-                      >View</el-button
-                    >
-                  </template>
-                </el-table-column>
-              </el-table>
-              <div v-else class="no-orders">
-                <p>No orders found.</p>
+              <!-- Add responsive table wrapper -->
+              <div class="table-responsive">
+                <el-table
+                  v-if="orders.length > 0"
+                  :data="orders"
+                  border
+                  style="width: 100%">
+                  <el-table-column prop="id" label="Order ID" min-width="100" />
+                  <el-table-column prop="date" label="Date" min-width="150" />
+                  <el-table-column label="Status" min-width="120">
+                    <template #default="scope">
+                      <span
+                        :class="[
+                          'status-badge',
+                          getStatusClass(scope.row.status),
+                        ]">
+                        {{ scope.row.status }}
+                      </span>
+                    </template>
+                  </el-table-column>
+                  <el-table-column
+                    prop="total"
+                    label="Total Amount"
+                    min-width="120" />
+                  <el-table-column
+                    label="Actions"
+                    min-width="100"
+                    fixed="right">
+                    <template #default="scope">
+                      <el-button
+                        type="primary"
+                        size="small"
+                        class="view-order-button"
+                        @click="viewOrderDetails(scope.row.id)"
+                        >View</el-button
+                      >
+                    </template>
+                  </el-table-column>
+                </el-table>
+                <div v-else class="no-orders">
+                  <p>No orders found.</p>
+                </div>
               </div>
             </el-card>
           </div>
@@ -51,34 +60,43 @@
     <el-dialog
       title="Order Details"
       v-model="orderDetailsVisible"
-      width="600px">
-      <div v-if="orderDetails">
-        <p><strong>Order ID:</strong> {{ orderDetails.order_id }}</p>
-        <p><strong>Date:</strong> {{ orderDetails.date_created }}</p>
-        <p><strong>Status:</strong> {{ orderDetails.status }}</p>
-        <p>
-          <strong>Total:</strong> {{ orderDetails.total }}
-          {{ orderDetails.currency }}
-        </p>
+      :fullscreen="isMobile"
+      :width="isMobile ? '100%' : '600px'"
+      class="order-details-dialog">
+      <div v-if="orderDetails" class="order-details-content">
+        <div class="order-info">
+          <p><strong>Order ID:</strong> {{ orderDetails.order_id }}</p>
+          <p><strong>Date:</strong> {{ orderDetails.date_created }}</p>
+          <p><strong>Status:</strong> {{ orderDetails.status }}</p>
+          <p>
+            <strong>Total:</strong> {{ orderDetails.total }}
+            {{ orderDetails.currency }}
+          </p>
+        </div>
         <h4>Items:</h4>
-        <el-table :data="orderDetails.items" border style="width: 100%">
-          <el-table-column prop="product_name" label="Product Name" />
-          <el-table-column prop="quantity" label="Quantity" />
-          <el-table-column prop="price" label="Price" />
-        </el-table>
+        <div class="table-responsive">
+          <el-table :data="orderDetails.items" border style="width: 100%">
+            <el-table-column
+              prop="product_name"
+              label="Product Name"
+              min-width="150" />
+            <el-table-column prop="quantity" label="Quantity" min-width="100" />
+            <el-table-column prop="price" label="Price" min-width="100" />
+          </el-table>
+        </div>
       </div>
       <div v-else>
         <p>Loading order details...</p>
       </div>
-      <span slot="footer" class="dialog-footer">
+      <template #footer>
         <el-button @click="orderDetailsVisible = false">Close</el-button>
-      </span>
+      </template>
     </el-dialog>
   </div>
 </template>
 
 <script>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, onUnmounted } from 'vue';
 import { useAppHelper } from '../../Composable/appHelper';
 import AlertMessage from '../../Composable/AlertMessage';
 import { loader } from '../../Composable/Loader';
@@ -98,6 +116,13 @@ export default {
     const orders = ref([]);
     const orderDetails = ref(null);
     const orderDetailsVisible = ref(false);
+
+    // Add responsive detection
+    const isMobile = ref(window.innerWidth <= 768);
+
+    const handleResize = () => {
+      isMobile.value = window.innerWidth <= 768;
+    };
 
     // Fetch all orders for the user
     const fetchOrders = async () => {
@@ -160,6 +185,11 @@ export default {
 
     onMounted(() => {
       fetchOrders();
+      window.addEventListener('resize', handleResize);
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener('resize', handleResize);
     });
 
     return {
@@ -168,41 +198,52 @@ export default {
       orderDetailsVisible,
       viewOrderDetails,
       getStatusClass,
+      isMobile,
     };
   },
 };
 </script>
 
 <style scoped>
+/* Base styles */
 .order-page {
   padding: 20px;
 }
 
-.order-container {
+.dashboard-container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 15px;
 }
 
+.order-container {
+  width: 100%;
+}
+
+/* Responsive table wrapper */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Card styles */
+.order-card {
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  margin: 15px 0;
+}
+
+/* Title styles */
 .order-title {
-  font-size: 24px;
+  font-size: clamp(20px, 4vw, 24px);
   font-weight: bold;
   margin-bottom: 20px;
   text-align: center;
 }
 
-.order-card {
-  border-radius: 8px;
-  background-color: #f9f9f9;
-}
-
-.no-orders {
-  text-align: center;
-  font-size: 16px;
-  color: #999;
-  padding: 20px;
-}
-
-/* Status Badge Styles */
+/* Status badge styles */
 .status-badge {
   padding: 5px 10px;
   border-radius: 12px;
@@ -210,23 +251,10 @@ export default {
   font-weight: bold;
   text-transform: capitalize;
   color: #fff;
+  white-space: nowrap;
 }
 
-.status-completed {
-  background-color: #67c23a; /* Green */
-}
-
-.status-pending {
-  background-color: #e6a23c; /* Orange */
-}
-
-.status-cancelled {
-  background-color: #f56c6c; /* Red */
-}
-
-.status-default {
-  background-color: #909399; /* Gray */
-}
+/* Button styles */
 .view-order-button {
   background-color: #333;
   color: #fff;
@@ -234,8 +262,74 @@ export default {
   border-radius: 4px;
   padding: 5px 10px;
   cursor: pointer;
+  white-space: nowrap;
 }
+
 .view-order-button:hover {
   background-color: #555;
+}
+
+/* Order details dialog */
+.order-details-dialog {
+  max-height: 90vh;
+}
+
+.order-details-content {
+  padding: 15px;
+}
+
+.order-info {
+  margin-bottom: 20px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .dashboard-container {
+    padding: 0 10px;
+  }
+
+  .order-card {
+    margin: 10px 0;
+  }
+
+  .status-badge {
+    padding: 3px 8px;
+    font-size: 11px;
+  }
+
+  .order-details-content {
+    padding: 10px;
+  }
+
+  /* Adjust table for mobile */
+  :deep(.el-table) {
+    font-size: 14px;
+  }
+
+  :deep(.el-table .cell) {
+    padding: 8px;
+  }
+}
+
+/* Status colors */
+.status-completed {
+  background-color: #67c23a;
+}
+.status-pending {
+  background-color: #e6a23c;
+}
+.status-cancelled {
+  background-color: #f56c6c;
+}
+.status-default {
+  background-color: #909399;
+}
+
+/* Loading state */
+.no-orders {
+  text-align: center;
+  font-size: 16px;
+  color: #999;
+  padding: 20px;
 }
 </style>

@@ -31,8 +31,8 @@
           </el-col>
 
           <!-- Third Column: Address -->
-          <el-col  :xs="24" :sm="24" :md="8" :lg="9" :xl="11" class="m-l-dashed">
-            <h3>Address</h3>
+          <el-col  :xs="24" :sm="24" :md="8" :lg="9" :xl="11" class="">
+            <h3 class="m-b-35">Address</h3>
             <el-form
               ref="addressForm"
               label-position="top"
@@ -40,25 +40,25 @@
               :rules="addressRules"
               validate-on-blur
               validate-on-change>
-              <el-form-item class="m-b-35" prop="house_name">
+              <el-form-item class="m-b-10" prop="house_name">
                 <el-input
                   v-model="addressDetails.house_name"
                   placeholder="House No/ Name"></el-input>
               </el-form-item>
 
-              <el-form-item class="m-b-35" prop="address_line_two">
+              <el-form-item class="m-b-10" prop="address_line_two">
                 <el-input
                   v-model="addressDetails.address_line_two"
                   placeholder="Address Line Two"></el-input>
               </el-form-item>
 
-              <el-form-item class="m-b-35" prop="town">
+              <el-form-item class="m-b-10" prop="town">
                 <el-input
                   v-model="addressDetails.town"
                   placeholder="Town"></el-input>
               </el-form-item>
 
-              <el-form-item class="m-b-35" prop="postcode">
+              <el-form-item class="m-b-10" prop="postcode">
                 <el-input
                   v-model="addressDetails.postcode"
                   placeholder="Postcode"></el-input>
@@ -313,6 +313,9 @@ export default {
 };
 </script>
 <style>
+.primary-button{
+    width: 180px !important;
+}
 .el-tabs__nav {
   display: flex;
   flex-direction: row;

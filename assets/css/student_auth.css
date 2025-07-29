@@ -26,7 +26,7 @@
 }
 .sa-student-profile-login .login-form .register-link {
   margin-top: 10px;
-  color: #60BBAC;
+  color: #0E1F79;
   text-decoration: none;
   cursor: pointer;
 }
@@ -34,7 +34,7 @@
   text-decoration: underline;
 }
 .sa-student-profile-login .login-form .forgot-password {
-  color: #60BBAC;
+  color: #0E1F79;
   cursor: pointer;
 }
 .sa-student-profile-login .login-form .forgot-password:hover {
@@ -56,7 +56,7 @@
   border-radius: 4px;
 }
 .sa-student-profile-login .login-form .el-form-item__content .el-input .el-input__wrapper .el-input__inner:focus {
-  border-color: #60BBAC;
+  border-color: #0E1F79;
 }
 .sa-student-profile-login .login-form .login-button {
   color: #fff;
@@ -84,7 +84,7 @@
   text-align: center;
 }
 .sa-student-profile-register .register-form .login-link {
-  color: #60BBAC;
+  color: #0E1F79;
   text-decoration: none;
   cursor: pointer;
 }
@@ -92,7 +92,7 @@
   text-decoration: underline;
 }
 .sa-student-profile-register .register-form .terms-conditions {
-  color: #60BBAC;
+  color: #0E1F79;
   text-decoration: none;
   cursor: pointer;
 }

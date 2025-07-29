@@ -79,7 +79,7 @@ class UserController extends BaseController
         $first_name    = sanitize_text_field( $this->request->get( 'first_name' ) );
         $last_name     = sanitize_text_field( $this->request->get( 'last_name' ) );
         $email         = sanitize_email( $this->request->get( 'email' ) );
-        
+
         $house_name    = sanitize_text_field( $this->request->get( 'house_name' ) );
         $address_line_two = sanitize_text_field( $this->request->get( 'address_line_two' ) );
         $town          = sanitize_text_field( $this->request->get( 'town' ) );
@@ -299,6 +299,18 @@ class UserController extends BaseController
                 'message' => 'You must need to logged in',
                 'status' => 'error',
             ], 200);
+        }
+    }
+    public function user_logout()
+    {
+        if ( is_user_logged_in() ) {
+            wp_logout();
+            return $this->response([
+                'message' => 'You have been logged out successfully',
+                'status' => 'success',
+            ], 200);
+        } else {
+            return $this->response('You must need to logged in', 400);
         }
     }
 

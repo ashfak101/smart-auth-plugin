@@ -4,7 +4,7 @@
 
 .primary-button {
     color: #fff;
-    background: #60BBAC;
+    background: #0E1F79;
 
     border: none;
     padding: 20px 20px;
@@ -12,7 +12,7 @@
     transition: all 0.3s;
 
     &:hover {
-        background: #2E6668;
+        background: #09175a;
         color: #fff;
     }
 
@@ -22,14 +22,14 @@
 
 .el-menu--horizontal {
     .is-active {
-        color: #60BBAC !important;
-        border-bottom-color: #60BBAC !important;
+        color: #0E1F79 !important;
+        border-bottom-color: #0E1F79 !important;
     }
 }
 
 .el-menu--horizontal>.el-menu-item.is-active {
-    color: #60BBAC !important;
-    border-bottom-color: #60BBAC !important;
+    color: #0E1F79 !important;
+    border-bottom-color: #0E1F79 !important;
 }
 
 .text-right {
