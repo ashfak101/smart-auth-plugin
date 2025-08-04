@@ -130,4 +130,42 @@ public function get_single_order_details($request)
         ],
     ];
 }
+        public function download_order_invoice($request)
+        {
+            $order_id = $request->get_param('order_id');
+
+            // Validate the order ID
+            if (!is_numeric($order_id) || $order_id <= 0) {
+                return [
+                    'status' => 'error',
+                    'message' => 'Invalid order ID',
+                ];
+            }
+
+            $order = wc_get_order($order_id);
+            if (!$order) {
+                return [
+                    'status' => 'error',
+                    'message' => 'Order not found',
+                ];
+            }
+
+            // Generate a simple invoice (as plain text for demo; use a PDF library for real invoices)
+            $invoice = "Invoice for Order #" . $order->get_id() . "\n";
+            $invoice .= "Date: " . $order->get_date_created()->date('Y-m-d H:i:s') . "\n";
+            $invoice .= "Total: " . $order->get_total() . " " . get_woocommerce_currency() . "\n";
+            $invoice .= "Status: " . $order->get_status() . "\n";
+            $invoice .= "Items:\n";
+            foreach ($order->get_items() as $item) {
+                $product = $item->get_product();
+                $invoice .= "- " . ($product ? $product->get_name() : 'Product') . " x " . $item->get_quantity() . " = " . $item->get_total() . "\n";
+            }
+
+            // Set headers for file download
+            header('Content-Type: text/plain');
+            header('Content-Disposition: attachment; filename="invoice-order-' . $order->get_id() . '.txt"');
+
+            echo $invoice;
+            exit;
+        }
 }

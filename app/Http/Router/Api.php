@@ -46,6 +46,7 @@ Router::post('revoke-access', 'AdminController@revoke_user_access');
 Router::publicGet('get-all-products', 'WooCommerceController@get_all_products');
 Router::get('get_orders_by_user_id', 'WooCommerceController@get_orders_by_user_id');
 Router::get('get_single_order_details', 'WooCommerceController@get_single_order_details');
+Router::publicGet('download_order_invoice', 'WooCommerceController@download_order_invoice');
 //Webhook
 Router::publicPost('webhook-refund-stripe', 'WebhookController@handle_webhook_refund_stripe');
 Router::publicPost('webhook-refund-paypal', 'WebhookController@handle_webhook_refund_paypal');

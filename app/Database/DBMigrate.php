@@ -11,9 +11,9 @@ require_once( ABSPATH.'wp-admin/includes/upgrade.php' );
 class DBMigrate
 {
     protected static $migrators = [
-        SavedOffersMigrator::class,
-        BrowsingHistoryMigrator::class,
-        OrderHistoryMigrator::class,
+        // SavedOffersMigrator::class,
+        // BrowsingHistoryMigrator::class,
+        // OrderHistoryMigrator::class,
     ];
 
     public static function run(){

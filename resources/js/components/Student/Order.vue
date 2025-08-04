@@ -43,6 +43,12 @@
                         @click="viewOrderDetails(scope.row.id)"
                         >View</el-button
                       >
+                      <!-- <el-button
+                        type="success"
+
+                        @click="downloadInvoice(scope.row.id)">
+                        Download Invoice
+                      </el-button> -->
                     </template>
                   </el-table-column>
                 </el-table>
@@ -191,13 +197,21 @@ export default {
     onUnmounted(() => {
       window.removeEventListener('resize', handleResize);
     });
-
+    const downloadInvoice = (orderId) => {
+      if (!orderId) return;
+      // Open the invoice download API in a new tab/window
+    //   window.open(
+    //     `/wp-json/smart-auth/v2/download_order_invoice?order_id=${orderId}`,
+    //     '_blank'
+    //   );
+    };
     return {
       orders,
       orderDetails,
       orderDetailsVisible,
       viewOrderDetails,
       getStatusClass,
+      downloadInvoice,
       isMobile,
     };
   },

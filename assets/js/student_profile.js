@@ -46960,12 +46960,21 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onUnmounted)(function () {
       window.removeEventListener('resize', handleResize);
     });
+    var downloadInvoice = function downloadInvoice(orderId) {
+      if (!orderId) return;
+      // Open the invoice download API in a new tab/window
+      //   window.open(
+      //     `/wp-json/smart-auth/v2/download_order_invoice?order_id=${orderId}`,
+      //     '_blank'
+      //   );
+    };
     return {
       orders: orders,
       orderDetails: orderDetails,
       orderDetailsVisible: orderDetailsVisible,
       viewOrderDetails: viewOrderDetails,
       getStatusClass: getStatusClass,
+      downloadInvoice: downloadInvoice,
       isMobile: isMobile
     };
   }
@@ -47632,7 +47641,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         }),
                         _: 2 /* DYNAMIC */,
                         __: [2]
-                      }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["onClick"])];
+                      }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["onClick"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <el-button\n                        type=\"success\"\n\n                        @click=\"downloadInvoice(scope.row.id)\">\n                        Download Invoice\n                      </el-button> ")];
                     }),
                     _: 1 /* STABLE */
                   })];
